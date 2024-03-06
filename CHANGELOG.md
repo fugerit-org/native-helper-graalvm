@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- GenerateReflectConfig API to generate reflect-config entry
+
 ## [1.0.0] - 2024-03-01
 
 ### Added
