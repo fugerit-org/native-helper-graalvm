@@ -2,10 +2,8 @@ package test.org.fugerit.java.nhg;
 
 import lombok.extern.slf4j.Slf4j;
 import org.fugerit.java.nhg.GenerateReflectConfig;
-import org.fugerit.java.nhg.reflect.config.Entry;
-import org.fugerit.java.nhg.reflect.config.EntryCondition;
-import org.fugerit.java.nhg.reflect.config.EntryField;
-import org.fugerit.java.nhg.reflect.config.EntryMethod;
+import org.fugerit.java.nhg.ReflectConfigUtil;
+import org.fugerit.java.nhg.reflect.config.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -51,10 +49,16 @@ public class TestGenerateReflectConfig {
         entry2.setFields( Arrays.asList( field2 ) );
         entry2.setMethods( Arrays.asList( method2 ) );
         entry2.setName( Integer.class.getName() );
+        // auto generate entry from class :
+        Entry entry3 = EntryHelper.addDefaultInit( ReflectConfigUtil.GETTERS_ONLY.toEntry( EntryMethod.class ) );
         // generate
         GenerateReflectConfig gen = new GenerateReflectConfig();
         try (StringWriter writer = new StringWriter()) {
-            gen.generate( writer, Arrays.asList( entry1, entry2 ) );
+            List<Entry> entries = Arrays.asList( entry1, entry2, entry3 );
+            // if you want the methods in fixed order :
+            entries.forEach( EntryHelper::fixedOrder );
+            // generate reflect-config.json
+            gen.generate( writer, entries);
             log.info( "output : \n{}", writer.toString() );
         }
     }

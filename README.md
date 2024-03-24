@@ -28,7 +28,7 @@ Utilities for Graal VM code generation
 
 2. Create your model
 
-```java
+```
         // entry setup type 1
         Entry entry1 = new Entry( String.class.getName() );
         entry1.setCondition( new EntryCondition( String.class.getName() ));
@@ -47,10 +47,16 @@ Utilities for Graal VM code generation
         entry2.setFields( Arrays.asList( field2 ) );
         entry2.setMethods( Arrays.asList( method2 ) );
         entry2.setName( Integer.class.getName() );
+        // auto generate entry from class :
+        Entry entry3 = EntryHelper.addDefaultInit( ReflectConfigUtil.GETTERS_ONLY.toEntry( EntryMethod.class ) );
         // generate
         GenerateReflectConfig gen = new GenerateReflectConfig();
         try (StringWriter writer = new StringWriter()) {
-            gen.generate( writer, Arrays.asList( entry1, entry2 ) );
+            List<Entry> entries = Arrays.asList( entry1, entry2, entry3 );
+            // if you want the methods in fixed order :
+            entries.forEach( EntryHelper::fixedOrder );
+            // generate reflect-config.json
+            gen.generate( writer, entries);
             log.info( "output : \n{}", writer.toString() );
         }
 ```
@@ -80,6 +86,21 @@ Utilities for Graal VM code generation
   "methods" : [ {
     "name" : "test2",
     "parameterTypes" : [ "java.util.Date" ]
+  } ]
+}, {
+  "name" : "org.fugerit.java.nhg.reflect.config.EntryMethod",
+  "methods" : [ {
+    "name" : "<init>",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getClass",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getName",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getParameterTypes",
+    "parameterTypes" : [ ]
   } ]
 } ]
 ```
