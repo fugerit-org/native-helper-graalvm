@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - InitHelper for constructors creations
 - GenerateReflectConfig API to generate reflect-config entry
 
+### Changed
+
+- fj-bom set to 1.6.3
+- fj-core set to 8.5.3
+
 ## [1.0.0] - 2024-03-01
 
 ### Added

@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.fugerit.java</groupId>
 		<artifactId>fj-bom</artifactId>
-		<version>1.6.1</version>
+		<version>1.6.3</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -25,7 +25,7 @@
 
 	<properties>
 	    <java-version-compliance>8</java-version-compliance>
-		<fj-version>8.4.10</fj-version>
+		<fj-version>8.5.3</fj-version>
 	</properties>	
 
 	<organization>

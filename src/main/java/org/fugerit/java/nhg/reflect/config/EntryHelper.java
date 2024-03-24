@@ -4,6 +4,8 @@ import java.util.List;
 
 public class EntryHelper {
 
+    private EntryHelper() {}
+
     public static final String INIT_METHOD_NAME = "<init>";
 
     public static Entry addDefaultInit( Entry entry ) {
