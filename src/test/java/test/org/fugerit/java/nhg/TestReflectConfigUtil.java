@@ -5,6 +5,7 @@ import org.fugerit.java.nhg.GenerateReflectConfig;
 import org.fugerit.java.nhg.ReflectConfigUtil;
 import org.fugerit.java.nhg.reflect.config.Entry;
 import org.fugerit.java.nhg.reflect.config.EntryField;
+import org.fugerit.java.nhg.reflect.config.EntryHelper;
 import org.fugerit.java.nhg.reflect.config.EntryMethod;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 public class TestReflectConfigUtil {
@@ -19,6 +21,8 @@ public class TestReflectConfigUtil {
     public Entry testReflectConfigUtilWorker( ReflectConfigUtil reflectConfigUtil ) throws IOException {
         ReflectDemo demo = new ReflectDemo();
         Entry entry = reflectConfigUtil.toEntry( demo.getClass() );
+        EntryHelper.addDefaultInit( entry );
+        EntryHelper.addInit( entry, Arrays.asList( String.class.getName() ) );
         Assert.assertEquals( demo.getClass().getName(), entry.getName() );
         GenerateReflectConfig config = new GenerateReflectConfig();
         try (StringWriter writer = new StringWriter() ) {
@@ -30,7 +34,8 @@ public class TestReflectConfigUtil {
 
     @Test
     public void testReflectUtilAllMethods() throws IOException {
-        Assert.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.ALL_METHODS ) );
+        Entry entry = this.testReflectConfigUtilWorker( ReflectConfigUtil.ALL_METHODS );
+        Assert.assertNotNull( entry );
     }
 
     @Test
