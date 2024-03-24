@@ -21,8 +21,8 @@ public class TestReflectConfigUtil {
     public Entry testReflectConfigUtilWorker( ReflectConfigUtil reflectConfigUtil ) throws IOException {
         ReflectDemo demo = new ReflectDemo();
         Entry entry = reflectConfigUtil.toEntry( demo.getClass() );
-        EntryHelper.addDefaultInit( entry );
-        EntryHelper.addInit( entry, Arrays.asList( String.class.getName() ) );
+        EntryHelper.addInit( EntryHelper.addDefaultInit( entry ), Arrays.asList( String.class.getName() ) );
+        EntryHelper.fixedOrder( entry );
         Assert.assertEquals( demo.getClass().getName(), entry.getName() );
         GenerateReflectConfig config = new GenerateReflectConfig();
         try (StringWriter writer = new StringWriter() ) {
