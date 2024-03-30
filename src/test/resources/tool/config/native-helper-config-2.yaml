@@ -1,0 +1,15 @@
+#Sample native helper config file
+---
+generate:
+  - className: org.fugerit.java.nhg.reflect.config.Entry
+    constructors: true
+    mode: getters
+  - className: org.fugerit.java.nhg.reflect.config.EntryCondition
+    constructors: true
+    mode: setters
+  - className: org.fugerit.java.nhg.reflect.config.EntryField
+    constructors: true
+    mode: getters_setters
+  - className: org.fugerit.java.nhg.reflect.config.EntryMethod
+    constructors: false
+    mode: all

@@ -4,26 +4,23 @@ import lombok.extern.slf4j.Slf4j;
 import org.fugerit.java.nhg.GenerateReflectConfig;
 import org.fugerit.java.nhg.ReflectConfigUtil;
 import org.fugerit.java.nhg.reflect.config.Entry;
-import org.fugerit.java.nhg.reflect.config.EntryField;
 import org.fugerit.java.nhg.reflect.config.EntryHelper;
-import org.fugerit.java.nhg.reflect.config.EntryMethod;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Arrays;
-import java.util.List;
 
 @Slf4j
-public class TestReflectConfigUtil {
+class TestReflectConfigUtil {
 
-    public Entry testReflectConfigUtilWorker( ReflectConfigUtil reflectConfigUtil ) throws IOException {
+    Entry testReflectConfigUtilWorker( ReflectConfigUtil reflectConfigUtil ) throws IOException {
         ReflectDemo demo = new ReflectDemo();
         Entry entry = reflectConfigUtil.toEntry( demo.getClass() );
         EntryHelper.addInit( EntryHelper.addDefaultInit( entry ), Arrays.asList( String.class.getName() ) );
         EntryHelper.fixedOrder( entry );
-        Assert.assertEquals( demo.getClass().getName(), entry.getName() );
+        Assertions.assertEquals( demo.getClass().getName(), entry.getName() );
         GenerateReflectConfig config = new GenerateReflectConfig();
         try (StringWriter writer = new StringWriter() ) {
             config.generate( writer, Arrays.asList( entry ) );
@@ -33,28 +30,28 @@ public class TestReflectConfigUtil {
     }
 
     @Test
-    public void testReflectUtilAllMethods() throws IOException {
+    void testReflectUtilAllMethods() throws IOException {
         Entry entry = this.testReflectConfigUtilWorker( ReflectConfigUtil.ALL_METHODS );
-        Assert.assertNotNull( entry );
+        Assertions.assertNotNull( entry );
     }
 
     @Test
-    public void testReflectUtilDeclaredMethods() throws IOException {
-        Assert.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.DECLARED_METHODS ) );
+    void testReflectUtilDeclaredMethods() throws IOException {
+        Assertions.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.DECLARED_METHODS ) );
     }
 
     @Test
-    public void testReflectUtilGettersSetters() throws IOException {
-        Assert.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.GETTERS_SETTERS ) );
+    void testReflectUtilGettersSetters() throws IOException {
+        Assertions.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.GETTERS_SETTERS ) );
     }
     @Test
-    public void testReflectUtilGettersOnly() throws IOException {
-        Assert.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.GETTERS_ONLY ) );
+    void testReflectUtilGettersOnly() throws IOException {
+        Assertions.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.GETTERS_ONLY ) );
     }
 
     @Test
-    public void testReflectUtilSettersOnly() throws IOException {
-        Assert.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.SETTERS_ONLY ) );
+    void testReflectUtilSettersOnly() throws IOException {
+        Assertions.assertNotNull( this.testReflectConfigUtilWorker( ReflectConfigUtil.SETTERS_ONLY ) );
     }
 
 }

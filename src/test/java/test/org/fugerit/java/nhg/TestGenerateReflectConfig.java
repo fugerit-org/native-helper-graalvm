@@ -4,8 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.fugerit.java.nhg.GenerateReflectConfig;
 import org.fugerit.java.nhg.ReflectConfigUtil;
 import org.fugerit.java.nhg.reflect.config.*;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -14,23 +14,23 @@ import java.util.Date;
 import java.util.List;
 
 @Slf4j
-public class TestGenerateReflectConfig {
+class TestGenerateReflectConfig {
 
     @Test
-    public void testKo() {
-        Assert.assertThrows( NullPointerException.class, () -> { new Entry( null ); } );
-        Assert.assertThrows( NullPointerException.class, () -> { new EntryField( null ); } );
-        Assert.assertThrows( NullPointerException.class, () -> { new EntryMethod( null ); } );
+    void testKo() {
+        Assertions.assertThrows( NullPointerException.class, () -> { new Entry( null ); } );
+        Assertions.assertThrows( NullPointerException.class, () -> { new EntryField( null ); } );
+        Assertions.assertThrows( NullPointerException.class, () -> { new EntryMethod( null ); } );
         final Entry entry = new Entry();
-        Assert.assertThrows( NullPointerException.class, () -> { entry.setName( null ); } );
+        Assertions.assertThrows( NullPointerException.class, () -> { entry.setName( null ); } );
         final EntryField field = new EntryField();
-        Assert.assertThrows( NullPointerException.class, () -> { field.setName( null ); } );
+        Assertions.assertThrows( NullPointerException.class, () -> { field.setName( null ); } );
         final EntryMethod method = new EntryMethod();
-        Assert.assertThrows( NullPointerException.class, () -> { method.setName( null ); } );
+        Assertions.assertThrows( NullPointerException.class, () -> { method.setName( null ); } );
     }
 
     @Test
-    public void testGenerate() throws IOException {
+    void testGenerate() throws IOException {
         // entry setup type 1
         Entry entry1 = new Entry( String.class.getName() );
         entry1.setCondition( new EntryCondition( String.class.getName() ));
