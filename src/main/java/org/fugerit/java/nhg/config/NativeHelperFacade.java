@@ -6,6 +6,7 @@ import org.fugerit.java.core.cfg.ConfigRuntimeException;
 import org.fugerit.java.core.function.SafeFunction;
 import org.fugerit.java.core.io.helper.StreamHelper;
 import org.fugerit.java.core.lang.helpers.StringUtils;
+import org.fugerit.java.core.util.ObjectUtils;
 import org.fugerit.java.nhg.ReflectConfigUtil;
 import org.fugerit.java.nhg.config.model.NativeHelperConfig;
 import org.fugerit.java.nhg.reflect.config.Entry;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NativeHelperFacade {
+
+    private NativeHelperFacade() {}
 
     public static final String MODE_GETTERS = "getters";
 
@@ -29,7 +32,8 @@ public class NativeHelperFacade {
         return SafeFunction.get( () -> {
             try (InputStream is = StreamHelper.resolveStream( path )) {
                 ObjectMapper mapper = new YAMLMapper();
-                NativeHelperConfig config = mapper.readValue( is, NativeHelperConfig.class );
+                NativeHelperConfig config = ObjectUtils.objectWithDefault(
+                        mapper.readValue( is, NativeHelperConfig.class ), new NativeHelperConfig() );
                 if ( config.getGenerate() == null ) {
                     config.setGenerate( new ArrayList<>() );
                 }

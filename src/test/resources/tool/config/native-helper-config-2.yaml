@@ -13,3 +13,8 @@ generate:
   - className: org.fugerit.java.nhg.reflect.config.EntryMethod
     constructors: false
     mode: all
+  - constructors: false
+    mode: all
+  - className: org.fugerit.java.nhg.reflect.config.EntryHelper
+    constructors: false
+    mode: not-exists
