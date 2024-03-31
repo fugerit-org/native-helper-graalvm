@@ -16,11 +16,10 @@ import java.util.Arrays;
 class TestReflectConfigUtil {
 
     Entry testReflectConfigUtilWorker( ReflectConfigUtil reflectConfigUtil ) throws IOException {
-        ReflectDemo demo = new ReflectDemo();
-        Entry entry = reflectConfigUtil.toEntry( demo.getClass() );
+        Entry entry = reflectConfigUtil.toEntry( ReflectDemo.class );
         EntryHelper.addInit( EntryHelper.addDefaultInit( entry ), Arrays.asList( String.class.getName() ) );
         EntryHelper.fixedOrder( entry );
-        Assertions.assertEquals( demo.getClass().getName(), entry.getName() );
+        Assertions.assertEquals( ReflectDemo.class.getName(), entry.getName() );
         GenerateReflectConfig config = new GenerateReflectConfig();
         try (StringWriter writer = new StringWriter() ) {
             config.generate( writer, Arrays.asList( entry ) );

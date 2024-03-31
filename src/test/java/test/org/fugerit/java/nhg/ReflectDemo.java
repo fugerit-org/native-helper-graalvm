@@ -1,10 +1,13 @@
 package test.org.fugerit.java.nhg;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@AllArgsConstructor
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class ReflectDemo {
 
+    @NonNull
     private String field1;
 
     public String getField1() {
