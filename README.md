@@ -1,6 +1,6 @@
 # Native Helper for Graal VM
 
-Utilities for Graal VM code generation
+Utilities for Graal VM metadata generation.
 
 [![Keep a Changelog v1.1.0 badge](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.1.0-%23E05735)](https://github.com/fugerit-org/native-helper-graalvm/blob/main/CHANGELOG.md)
 [![license](https://img.shields.io/badge/License-Apache%20License%202.0-teal.svg)](https://opensource.org/licenses/Apache-2.0)  
