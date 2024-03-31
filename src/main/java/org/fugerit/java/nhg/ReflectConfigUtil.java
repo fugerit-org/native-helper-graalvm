@@ -1,6 +1,7 @@
 package org.fugerit.java.nhg;
 
 import org.fugerit.java.nhg.reflect.config.Entry;
+import org.fugerit.java.nhg.reflect.config.EntryHelper;
 import org.fugerit.java.nhg.reflect.config.EntryMethod;
 
 import java.lang.reflect.Method;
@@ -22,15 +23,36 @@ public class ReflectConfigUtil {
         this.fun = c -> Arrays.asList( c.getMethods() );
     }
 
-    public Entry toEntry(Class<?> c) {
-        final Entry entry = new Entry( c.getName() );
-        entry.setMethods(
-                fun.apply(c).stream().map( m -> {
-                    final EntryMethod entryMethod = new EntryMethod( m.getName() );
-                    Arrays.stream( m.getParameterTypes() ).forEach( p -> entryMethod.getParameterTypes().add( p.getName() ) );
-                    return entryMethod;
-                } ).collect( Collectors.toList() ) );
+    private EntryMethod newMethod( final String name, final Class<?>[] parameters ) {
+        final EntryMethod entryMethod = new EntryMethod( name );
+        Arrays.stream( parameters ).forEach( p -> entryMethod.getParameterTypes().add( p.getName() ) );
+        return entryMethod;
+    }
+
+    public Entry addMethods(final Entry entry, final Class<?> c) {
+        fun.apply(c).forEach( m -> entry.getMethods().add( this.newMethod(m.getName(), m.getParameterTypes())));
         return entry;
+    }
+
+    public Entry addConstructors(final Entry entry, final Class<?> c) {
+        Arrays.asList(c.getConstructors()).forEach( m -> entry.getMethods().add( this.newMethod(EntryHelper.INIT_METHOD_NAME, m.getParameterTypes())));
+        return entry;
+    }
+
+    public Entry toEntry(final Class<?> c) {
+        return this.addMethods( new Entry( c.getName() ), c );
+    }
+
+    public Entry toEntry(final Class<?> c, final boolean constructors) {
+        if ( constructors ) {
+            return this.toEntryWithConstructors( c );
+        } else {
+            return this.toEntry( c );
+        }
+    }
+
+    public Entry toEntryWithConstructors(final Class<?> c) {
+        return this.addConstructors( this.addMethods( new Entry( c.getName() ), c ), c );
     }
 
     public static final ReflectConfigUtil ALL_METHODS = new ReflectConfigUtil();

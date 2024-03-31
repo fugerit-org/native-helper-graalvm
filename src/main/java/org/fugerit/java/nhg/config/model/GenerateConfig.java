@@ -14,6 +14,6 @@ public class GenerateConfig {
     private String mode;
 
     @Getter @Setter
-    private boolean constructors;
+    private boolean skipConstructors;
 
 }

@@ -2,19 +2,19 @@
 ---
 generate:
   - className: org.fugerit.java.nhg.reflect.config.Entry
-    constructors: true
+    skipConstructors: true
     mode: getters
   - className: org.fugerit.java.nhg.reflect.config.EntryCondition
-    constructors: true
+    skipConstructors: true
     mode: setters
   - className: org.fugerit.java.nhg.reflect.config.EntryField
-    constructors: true
+    skipConstructors: true
     mode: getters_setters
   - className: org.fugerit.java.nhg.reflect.config.EntryMethod
-    constructors: false
+    skipConstructors: false
     mode: all
-  - constructors: false
+  - skipConstructors: false
     mode: all
   - className: org.fugerit.java.nhg.reflect.config.EntryHelper
-    constructors: false
+    skipConstructors: false
     mode: not-exists

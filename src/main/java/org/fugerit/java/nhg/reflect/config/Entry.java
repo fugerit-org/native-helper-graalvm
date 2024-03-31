@@ -2,6 +2,7 @@ package org.fugerit.java.nhg.reflect.config;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -15,9 +16,9 @@ public class Entry {
     private String name;
 
     @Getter @Setter
-    private List<EntryField> fields;
+    private List<EntryField> fields = new ArrayList<>();
 
     @Getter @Setter
-    private List<EntryMethod> methods;
+    private List<EntryMethod> methods = new ArrayList<>();
 
 }

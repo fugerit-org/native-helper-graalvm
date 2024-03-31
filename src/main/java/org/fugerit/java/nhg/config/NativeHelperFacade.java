@@ -64,10 +64,7 @@ public class NativeHelperFacade {
                 SafeFunction.apply( () -> {
                     Class<?> c = Class.forName(g.getClassName());
                     ReflectConfigUtil utils = getUtils( g.getMode() );
-                    Entry entry = utils.toEntry( c );
-                    if ( g.isConstructors() ) {
-                        EntryHelper.addDefaultInit( entry );
-                    }
+                    Entry entry = utils.toEntry( c, !g.isSkipConstructors() );
                     EntryHelper.fixedOrder( entry );
                     list.add(entry);
                 } );
