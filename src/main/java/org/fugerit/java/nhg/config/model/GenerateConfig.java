@@ -16,4 +16,7 @@ public class GenerateConfig {
     @Getter @Setter
     private boolean skipConstructors;
 
+    @Getter @Setter
+    private String typeReachable;
+
 }

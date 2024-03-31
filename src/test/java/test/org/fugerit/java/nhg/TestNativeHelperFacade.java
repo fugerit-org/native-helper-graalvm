@@ -8,6 +8,8 @@ import org.fugerit.java.nhg.config.model.NativeHelperConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.AbstractMap;
 import java.util.Arrays;
@@ -18,6 +20,14 @@ import java.util.stream.Stream;
 
 @Slf4j
 class TestNativeHelperFacade {
+
+    private static final String BASE_TEST_CONFIG_PATH = "src/test/resources/tool/config/";
+
+    private static final String TEST_CONFIG_1 = BASE_TEST_CONFIG_PATH+"native-helper-config-1.yaml";
+
+    private static final String TEST_CONFIG_2 = BASE_TEST_CONFIG_PATH+"native-helper-config-2.yaml";
+
+    private static final String TEST_CONFIG_BLANK = BASE_TEST_CONFIG_PATH+"native-helper-config-blank.yaml";
 
     private NativeHelperConfig loadConfig(String path ) {
         NativeHelperConfig config = NativeHelperFacade.loadConfig( path );
@@ -34,9 +44,9 @@ class TestNativeHelperFacade {
     }
 
     private Map<String, Boolean> CONFIG_MAP = Stream.of(
-                    new AbstractMap.SimpleImmutableEntry<>("src/test/resources/tool/config/native-helper-config-1.yaml", true),
-                    new AbstractMap.SimpleImmutableEntry<>("src/test/resources/tool/config/native-helper-config-2.yaml", false),
-                    new AbstractMap.SimpleImmutableEntry<>("src/test/resources/tool/config/native-helper-config-blank.yaml", true))
+                    new AbstractMap.SimpleImmutableEntry<>(TEST_CONFIG_1, true),
+                    new AbstractMap.SimpleImmutableEntry<>(TEST_CONFIG_2, false),
+                    new AbstractMap.SimpleImmutableEntry<>(TEST_CONFIG_BLANK, true))
             .           collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
     @Test
@@ -51,6 +61,19 @@ class TestNativeHelperFacade {
                Assertions.assertThrows(ConfigRuntimeException.class, () -> this.printConfig( config ) );
             }
         } );
+    }
+
+    @Test
+    void testConfig1() throws IOException {
+        Assertions.assertThrows( IOException.class, () -> NativeHelperFacade.loadAndGenerate( TEST_CONFIG_1 ) );
+        File file = new File( "target/native-image" );
+        file.mkdir();
+        NativeHelperFacade.loadAndGenerate( TEST_CONFIG_1 );
+    }
+
+    @Test
+    void testConfigFail2() {
+        Assertions.assertThrows( ConfigRuntimeException.class, () -> NativeHelperFacade.loadAndGenerate( TEST_CONFIG_2 ) );
     }
 
 }

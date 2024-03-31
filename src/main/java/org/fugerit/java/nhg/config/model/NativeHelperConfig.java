@@ -11,6 +11,12 @@ import java.util.List;
 public class NativeHelperConfig {
 
     @Getter @Setter
+    private String reflectConfigJsonOutputPath;
+
+    @Getter @Setter
+    private boolean createParentDirectory;
+
+    @Getter @Setter
     private List<GenerateConfig> generate;
 
 }

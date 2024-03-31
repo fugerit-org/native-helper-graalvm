@@ -22,15 +22,9 @@ public class EntryHelper {
         return entry;
     }
 
-    private static Comparator<EntryMethod> SORT_METHODS = new Comparator<EntryMethod>() {
-        @Override
-        public int compare(EntryMethod o1, EntryMethod o2) {
-            return (o1.getName()+o1.getParameterTypes().size()).compareTo( o2.getName()+o2.getParameterTypes().size() );
-        }
-    };
-
     public static Entry fixedOrder( Entry entry ) {
-        Collections.sort( entry.getMethods(), SORT_METHODS );
+        Collections.sort( entry.getMethods(),
+                (o1, o2) -> (o1.getName()+o1.getParameterTypes().size()).compareTo( o2.getName()+o2.getParameterTypes().size() ) );
         return entry;
     }
 

@@ -171,17 +171,20 @@ Here is a full [code example](src/test/java/test/org/fugerit/java/nhg/TestSample
 
 top level properties :
 
-| name     | default | required | type             | description                 |
-|----------|---------|----------|------------------|-----------------------------|
-| generate | *none*  | *true*   |  list of entries | list of entries to generate |
+| name                        | default | required | type            | description                                                            |
+|-----------------------------|---------|----------|-----------------|------------------------------------------------------------------------|
+| reflectConfigJsonOutputPath | *none*  | *false*  | *string*        | default generation path for *reflect-config.json* file                 |
+| createParentDirectory       | *false* | *false*  | *boolean*       | if *true* will generate *reflectConfigJsonOutputPath* parent directory |
+| generate                    | *none*  | *true*   | list of entries | list of entries to generate                                            |
 
 entries properties : 
 
-| name           | default | required | type      | description                                                    |
-|----------------|---------|----------|-----------|----------------------------------------------------------------|
-| className      | *none*  | *true*   | *string*  | fully qualified class name                                     |
-| mode           | *none*  | *true*   | *string*  | accept values : *getters*, *setters*, *getters_setters*, *all* |
-| skipGenerators | *false* | *false*  | *boolean* | if set to *true* will not generate constructors methadata      |
+| name            | default | required | type      | description                                                    |
+|-----------------|---------|----------|-----------|----------------------------------------------------------------|
+| className       | *none*  | *true*   | *string*  | fully qualified class name                                     |
+| mode            | *none*  | *true*   | *string*  | accept values : *getters*, *setters*, *getters_setters*, *all* |
+| skipGenerators  | *false* | *false*  | *boolean* | if set to *true* will not generate constructors metadata       |
+| typeReachable   | *none*  | *false*  | *string*  | type for typeReachable condition                               |
 
 ## 4. Generate reflect-config.json file
 
