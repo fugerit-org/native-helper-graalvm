@@ -86,7 +86,7 @@ public class NativeHelperFacade {
                 if ( StringUtils.isNotEmpty( g.getExcludeClassNames() ) ) {
                     excludeClassNames.addAll( Arrays.asList( g.getExcludeClassNames().split( "," ) ) );
                 }
-                AccessingAllClassesInPackage.findAllClassesUsingClassLoader(g.getPackageName()).stream()
+                PackageLookupHelper.findAllClassesUsingClassLoader(g.getPackageName()).stream()
                         .filter(
                             c -> !excludeClassNames.contains( c.getSimpleName() )
                         ).sorted(

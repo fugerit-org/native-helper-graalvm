@@ -11,11 +11,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+/*
+ * Adapted from : https://www.baeldung.com/java-find-all-classes-in-package
+ */
 @Slf4j
-public class AccessingAllClassesInPackage {
+public class PackageLookupHelper {
 
-    private AccessingAllClassesInPackage() {}
+    private PackageLookupHelper() {}
 
     public static Set<Class<?>> findAllClassesUsingClassLoader(String packageName) throws ConfigRuntimeException {
         return SafeFunction.get( () -> {
@@ -31,7 +33,7 @@ public class AccessingAllClassesInPackage {
     private static Class<?> getClass(String className, String packageName) {
         return SafeFunction.get( () -> {
             log.debug( "packageName : {}, className : {}", packageName, className );
-            return Class.forName(packageName+"."+className.substring(0, className.lastIndexOf('.')));
+            return ClassHelper.getDefaultClassLoader().loadClass(packageName+"."+className.substring(0, className.lastIndexOf('.')));
         } );
     }
 
