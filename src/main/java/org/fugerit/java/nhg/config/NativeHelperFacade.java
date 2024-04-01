@@ -83,6 +83,12 @@ public class NativeHelperFacade {
         return list;
     }
 
+    public static List<Entry> generate( NativeHelperConfig config, File file ) throws IOException {
+        try ( FileWriter writer = new FileWriter( file ) ) {
+            return generate( config, writer );
+        }
+    }
+
     public static List<Entry> generate( NativeHelperConfig config, Writer reflectConfigJsonWriter ) {
         List<Entry> entries = generateEntries( config );
         GenerateReflectConfig generateReflectConfig = new GenerateReflectConfig();
@@ -98,9 +104,7 @@ public class NativeHelperFacade {
             if ( config.isCreateParentDirectory() ) {
                 log.info( "createParentDirectory : {} -> {}", reflectConfigJsonFile.getParentFile(), reflectConfigJsonFile.getParentFile().mkdirs() );
             }
-            try (FileWriter reflectConfigJsonWriter = new FileWriter( reflectConfigJsonFile ) ) {
-                generate( config, reflectConfigJsonWriter );
-            }
+            generate( config, reflectConfigJsonFile );
         } else {
             throw new ConfigRuntimeException( String.format( "Param %s not set.", PARAM_REFLECT_CONFIG_JSON_OUTPUT_PATH ) );
         }
