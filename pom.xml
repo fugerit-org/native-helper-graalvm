@@ -13,7 +13,7 @@
 
 	<name>Native Helper for Graal VM</name>
 	<description>Utilities for Graal VM code generation</description>
-	<version>1.3.5-SNAPSHOT</version>
+	<version>1.3.5</version>
 
 	<licenses>
 		<license>
