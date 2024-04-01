@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.fugerit.java.core.cfg.ConfigRuntimeException;
 import org.fugerit.java.core.function.SafeFunction;
 import org.fugerit.java.core.io.helper.StreamHelper;
+import org.fugerit.java.core.lang.helpers.ClassHelper;
 import org.fugerit.java.core.lang.helpers.StringUtils;
 import org.fugerit.java.core.util.ObjectUtils;
 import org.fugerit.java.nhg.GenerateReflectConfig;
@@ -68,7 +69,7 @@ public class NativeHelperFacade {
         config.getGenerate().forEach(g -> {
             if (StringUtils.isNotEmpty(g.getClassName())) {
                 SafeFunction.apply( () -> {
-                    Class<?> c = Class.forName(g.getClassName());
+                    Class<?> c = ClassHelper.getDefaultClassLoader().loadClass(g.getClassName());
                     ReflectConfigUtil utils = getUtils( g.getMode() );
                     Entry entry = utils.toEntry( c, !g.isSkipConstructors() );
                     if ( StringUtils.isNotEmpty( g.getTypeReachable() ) ) {
