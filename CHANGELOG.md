@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Generation based on all class in a package (packageName parameter)
 
+### Changed
+
+- fj-bom version set to 1.6.4
+
 ## [1.3.2] - 2024-04-01
 
 ### Added
