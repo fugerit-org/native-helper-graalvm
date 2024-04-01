@@ -34,36 +34,36 @@ available, to add the generation to project build.
 1.2 Create your reflect config entry model
 
 ```
-        // entry setup type 1
-        Entry entry1 = new Entry( String.class.getName() );
-        entry1.setCondition( new EntryCondition( String.class.getName() ));
-        entry1.setFields( Arrays.asList( new EntryField( "prop1" ) ) );
-        entry1.setMethods( Arrays.asList( new EntryMethod( "test1" ) ) );
-        // entry setup type 2
-        EntryCondition condition2 = new EntryCondition();
-        condition2.setTypeReachable( Double.class.getName() );
-        EntryField field2 = new EntryField();
-        field2.setName( "prop2" );
-        EntryMethod method2 = new EntryMethod();
-        method2.setName( "test2" );
-        method2.setParameterTypes( Arrays.asList(Date.class.getName()) );
-        Entry entry2 = new Entry();
-        entry2.setCondition( condition2 );
-        entry2.setFields( Arrays.asList( field2 ) );
-        entry2.setMethods( Arrays.asList( method2 ) );
-        entry2.setName( Integer.class.getName() );
-        // auto generate entry from class :
-        Entry entry3 = EntryHelper.addDefaultInit( ReflectConfigUtil.GETTERS_ONLY.toEntry( EntryMethod.class ) );
-        // generate
-        GenerateReflectConfig gen = new GenerateReflectConfig();
-        try (StringWriter writer = new StringWriter()) {
-            List<Entry> entries = Arrays.asList( entry1, entry2, entry3 );
-            // if you want the methods in fixed order :
-            entries.forEach( EntryHelper::fixedOrder );
-            // generate reflect-config.json
-            gen.generate( writer, entries);
-            log.info( "output : \n{}", writer.toString() );
-        }
+// entry setup type 1
+Entry entry1 = new Entry( String.class.getName() );
+entry1.setCondition( new EntryCondition( String.class.getName() ));
+entry1.setFields( Arrays.asList( new EntryField( "prop1" ) ) );
+entry1.setMethods( Arrays.asList( new EntryMethod( "test1" ) ) );
+// entry setup type 2
+EntryCondition condition2 = new EntryCondition();
+condition2.setTypeReachable( Double.class.getName() );
+EntryField field2 = new EntryField();
+field2.setName( "prop2" );
+EntryMethod method2 = new EntryMethod();
+method2.setName( "test2" );
+method2.setParameterTypes( Arrays.asList(Date.class.getName()) );
+Entry entry2 = new Entry();
+entry2.setCondition( condition2 );
+entry2.setFields( Arrays.asList( field2 ) );
+entry2.setMethods( Arrays.asList( method2 ) );
+entry2.setName( Integer.class.getName() );
+// auto generate entry from class :
+Entry entry3 = EntryHelper.addDefaultInit( ReflectConfigUtil.GETTERS_ONLY.toEntry( EntryMethod.class ) );
+// generate
+GenerateReflectConfig gen = new GenerateReflectConfig();
+try (StringWriter writer = new StringWriter()) {
+    List<Entry> entries = Arrays.asList( entry1, entry2, entry3 );
+    // if you want the methods in fixed order :
+    entries.forEach( EntryHelper::fixedOrder );
+    // generate reflect-config.json
+    gen.generate( writer, entries);
+    log.info( "output : \n{}", writer.toString() );
+}
 ```
 
 1.3 Output will be
@@ -135,7 +135,7 @@ To bulk generate reflect-config.json, you can use the *NativeHelperFacade*.
 
 *NativeHelperFacade* uses a yaml configuration file to generate the entries.
 
-Here is a sample [native-helper-config.yaml](src/test/resources/tool/config/native-helper-config-1.yaml) 
+Here is a sample [native-helper-config.yaml](src/main/config/native-helper-config.yaml) 
 configuration file :
 
 ```yaml
