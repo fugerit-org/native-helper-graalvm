@@ -89,6 +89,8 @@ public class NativeHelperFacade {
                 AccessingAllClassesInPackage.findAllClassesUsingClassLoader(g.getPackageName()).stream()
                         .filter(
                             c -> !excludeClassNames.contains( c.getSimpleName() )
+                        ).sorted(
+                            ( c1, c2 ) -> c1.getSimpleName().compareTo( c2.getSimpleName() )
                         ).forEach( c -> {
                             log.info( "generate class reflect config : {} (from package : {})", c, g.getPackageName() );
                             handleClass( c, list, g );
