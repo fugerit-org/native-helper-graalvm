@@ -26,7 +26,7 @@
 	<properties>
 	    <java-version-compliance>8</java-version-compliance>
 		<fj-version>8.5.3</fj-version>
-	</properties>	
+	</properties>
 
 	<organization>
 		<url>https://www.fugerit.org</url>

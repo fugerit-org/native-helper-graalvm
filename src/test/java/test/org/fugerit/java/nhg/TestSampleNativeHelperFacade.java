@@ -17,7 +17,7 @@ class TestSampleNativeHelperFacade {
 
     @Test
     void nativeHelperFacadeSample() throws IOException {
-        // path the native-helper-config.yaml file
+        // path the native-helper-config-package.yaml file
         String path = "src/test/resources/tool/config/native-helper-config-1.yaml";
         // reads configuration
         NativeHelperConfig config = NativeHelperFacade.loadConfig( path );

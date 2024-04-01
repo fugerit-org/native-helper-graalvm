@@ -1,0 +1,11 @@
+# native-helper-graalvm generation configuration
+---
+reflectConfigJsonOutputPath: target/native-image-package/reflect-config.json
+createParentDirectory: true
+generate:
+  - packageName: org.fugerit.java.nhg.reflect.config
+    excludeClassNames: EntryHelper
+    mode: getters
+  - packageName: org.fugerit.java.nhg.config.model
+    mode: getters_setters
+    typeReachable: org.fugerit.java.nhg.config.NativeHelperFacade

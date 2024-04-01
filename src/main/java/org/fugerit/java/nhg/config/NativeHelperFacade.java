@@ -11,14 +11,14 @@ import org.fugerit.java.core.lang.helpers.StringUtils;
 import org.fugerit.java.core.util.ObjectUtils;
 import org.fugerit.java.nhg.GenerateReflectConfig;
 import org.fugerit.java.nhg.ReflectConfigUtil;
+import org.fugerit.java.nhg.config.model.GenerateConfig;
 import org.fugerit.java.nhg.config.model.NativeHelperConfig;
 import org.fugerit.java.nhg.reflect.config.Entry;
 import org.fugerit.java.nhg.reflect.config.EntryCondition;
 import org.fugerit.java.nhg.reflect.config.EntryHelper;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 public class NativeHelperFacade {
@@ -64,20 +64,37 @@ public class NativeHelperFacade {
         }
     }
 
+    private static void handleClass( final Class<?> c, final List<Entry> list, final GenerateConfig g ) {
+        ReflectConfigUtil utils = getUtils( g.getMode() );
+        Entry entry = utils.toEntry( c, !g.isSkipConstructors() );
+        if ( StringUtils.isNotEmpty( g.getTypeReachable() ) ) {
+            entry.setCondition( new EntryCondition( g.getTypeReachable() ) );
+        }
+        EntryHelper.fixedOrder( entry );
+        list.add(entry);
+    }
+
     public static List<Entry> generateEntries( NativeHelperConfig config ) {
         final List<Entry> list = new ArrayList<>();
         config.getGenerate().forEach(g -> {
             if (StringUtils.isNotEmpty(g.getClassName())) {
-                SafeFunction.apply( () -> {
-                    Class<?> c = ClassHelper.getDefaultClassLoader().loadClass(g.getClassName());
-                    ReflectConfigUtil utils = getUtils( g.getMode() );
-                    Entry entry = utils.toEntry( c, !g.isSkipConstructors() );
-                    if ( StringUtils.isNotEmpty( g.getTypeReachable() ) ) {
-                        entry.setCondition( new EntryCondition( g.getTypeReachable() ) );
-                    }
-                    EntryHelper.fixedOrder( entry );
-                    list.add(entry);
-                } );
+                Class<?> c = SafeFunction.get( () -> ClassHelper.getDefaultClassLoader().loadClass(g.getClassName() ) );
+                log.info( "generate class reflect config : {}", c );
+                handleClass( c, list, g );
+            } else if ( StringUtils.isNotEmpty(g.getPackageName()) ) {
+                Set<String> excludeClassNames = new HashSet<>();
+                if ( StringUtils.isNotEmpty( g.getExcludeClassNames() ) ) {
+                    excludeClassNames.addAll( Arrays.asList( g.getExcludeClassNames().split( "," ) ) );
+                }
+                AccessingAllClassesInPackage.findAllClassesUsingClassLoader(g.getPackageName()).stream()
+                        .filter(
+                            c -> !excludeClassNames.contains( c.getSimpleName() )
+                        ).forEach( c -> {
+                            log.info( "generate class reflect config : {} (from package : {})", c, g.getPackageName() );
+                            handleClass( c, list, g );
+                        } );
+            } else {
+                throw new ConfigRuntimeException( "className or packageName must be provided for each entry" );
             }
         });
         return list;

@@ -11,6 +11,12 @@ public class GenerateConfig {
     private String className;
 
     @Getter @Setter
+    private String packageName;
+
+    @Getter @Setter
+    private String excludeClassNames;
+
+    @Getter @Setter
     private String mode;
 
     @Getter @Setter

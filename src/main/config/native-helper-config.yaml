@@ -11,9 +11,6 @@ generate:
     mode: getters
   - className: org.fugerit.java.nhg.reflect.config.EntryMethod
     mode: getters
-  - className: org.fugerit.java.nhg.config.model.NativeHelperConfig
-    mode: getters_setters
-    typeReachable: org.fugerit.java.nhg.config.NativeHelperFacade
-  - className: org.fugerit.java.nhg.config.model.GenerateConfig
+  - packageName: org.fugerit.java.nhg.config.model
     mode: getters_setters
     typeReachable: org.fugerit.java.nhg.config.NativeHelperFacade

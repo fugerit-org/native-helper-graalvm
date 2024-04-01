@@ -78,6 +78,52 @@
   "condition" : {
     "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
   },
+  "name" : "org.fugerit.java.nhg.config.model.GenerateConfig",
+  "fields" : [ ],
+  "methods" : [ {
+    "name" : "<init>",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getClass",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getClassName",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getExcludeClassNames",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getMode",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getPackageName",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getTypeReachable",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "setClassName",
+    "parameterTypes" : [ "java.lang.String" ]
+  }, {
+    "name" : "setExcludeClassNames",
+    "parameterTypes" : [ "java.lang.String" ]
+  }, {
+    "name" : "setMode",
+    "parameterTypes" : [ "java.lang.String" ]
+  }, {
+    "name" : "setPackageName",
+    "parameterTypes" : [ "java.lang.String" ]
+  }, {
+    "name" : "setSkipConstructors",
+    "parameterTypes" : [ "boolean" ]
+  }, {
+    "name" : "setTypeReachable",
+    "parameterTypes" : [ "java.lang.String" ]
+  } ]
+}, {
+  "condition" : {
+    "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
+  },
   "name" : "org.fugerit.java.nhg.config.model.NativeHelperConfig",
   "fields" : [ ],
   "methods" : [ {
@@ -100,40 +146,6 @@
     "parameterTypes" : [ "java.util.List" ]
   }, {
     "name" : "setReflectConfigJsonOutputPath",
-    "parameterTypes" : [ "java.lang.String" ]
-  } ]
-}, {
-  "condition" : {
-    "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
-  },
-  "name" : "org.fugerit.java.nhg.config.model.GenerateConfig",
-  "fields" : [ ],
-  "methods" : [ {
-    "name" : "<init>",
-    "parameterTypes" : [ ]
-  }, {
-    "name" : "getClass",
-    "parameterTypes" : [ ]
-  }, {
-    "name" : "getClassName",
-    "parameterTypes" : [ ]
-  }, {
-    "name" : "getMode",
-    "parameterTypes" : [ ]
-  }, {
-    "name" : "getTypeReachable",
-    "parameterTypes" : [ ]
-  }, {
-    "name" : "setClassName",
-    "parameterTypes" : [ "java.lang.String" ]
-  }, {
-    "name" : "setMode",
-    "parameterTypes" : [ "java.lang.String" ]
-  }, {
-    "name" : "setSkipConstructors",
-    "parameterTypes" : [ "boolean" ]
-  }, {
-    "name" : "setTypeReachable",
     "parameterTypes" : [ "java.lang.String" ]
   } ]
 } ]

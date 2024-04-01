@@ -29,6 +29,8 @@ class TestNativeHelperFacade {
 
     private static final String TEST_CONFIG_BLANK = BASE_TEST_CONFIG_PATH+"native-helper-config-blank.yaml";
 
+    private static final String TEST_CONFIG_PACKAGE = BASE_TEST_CONFIG_PATH+"native-helper-config-package.yaml";
+
     private NativeHelperConfig loadConfig(String path ) {
         NativeHelperConfig config = NativeHelperFacade.loadConfig( path );
         config.getGenerate().forEach( g -> log.info( "generation config : {}", g ) );
@@ -46,6 +48,7 @@ class TestNativeHelperFacade {
     private Map<String, Boolean> CONFIG_MAP = Stream.of(
                     new AbstractMap.SimpleImmutableEntry<>(TEST_CONFIG_1, true),
                     new AbstractMap.SimpleImmutableEntry<>(TEST_CONFIG_2, false),
+                    new AbstractMap.SimpleImmutableEntry<>(TEST_CONFIG_PACKAGE, true),
                     new AbstractMap.SimpleImmutableEntry<>(TEST_CONFIG_BLANK, true))
             .           collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 

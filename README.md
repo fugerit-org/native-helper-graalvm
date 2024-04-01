@@ -184,12 +184,16 @@ top level properties :
 
 entries properties : 
 
-| name            | default | required | type      | description                                                    |
-|-----------------|---------|----------|-----------|----------------------------------------------------------------|
-| className       | *none*  | *true*   | *string*  | fully qualified class name                                     |
-| mode            | *none*  | *true*   | *string*  | accept values : *getters*, *setters*, *getters_setters*, *all* |
-| skipGenerators  | *false* | *false*  | *boolean* | if set to *true* will not generate constructors metadata       |
-| typeReachable   | *none*  | *false*  | *string*  | type for typeReachable condition                               |
+| name              | default | required | type      | description                                                                     |
+|-------------------|---------|----------|-----------|---------------------------------------------------------------------------------|
+| className         | *none*  | *false*  | *string*  | fully qualified class name (alternative to *packageName*)                       |
+| packageName       | *none*  | *false*  | *string*  | fully qualified package name (alternative to *className*) (*)                   |
+| excludeClassNames | *none*  | *false*  | *string*  | if *packageName* is set, comma separeted list of class simple names to excludes |
+| mode              | *none*  | *true*   | *string*  | accept values : *getters*, *setters*, *getters_setters*, *all*                  |
+| skipGenerators    | *false* | *false*  | *boolean* | if set to *true* will not generate constructors metadata                        |
+| typeReachable     | *none*  | *false*  | *string*  | type for typeReachable condition                                                |
+
+(*) currently package packed in a jar are not supported.
 
 ## 4. Generate reflect-config.json file
 
