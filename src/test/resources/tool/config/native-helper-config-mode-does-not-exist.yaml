@@ -1,0 +1,6 @@
+#Sample native helper config file
+---
+generate:
+  - className: org.fugerit.java.nhg.reflect.config.EntryHelper
+    skipConstructors: false
+    mode: not-exists
