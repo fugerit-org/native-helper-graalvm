@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class MergeConfigUtil {
@@ -20,8 +21,8 @@ public class MergeConfigUtil {
     public static void addFolder( List<Entry> entries, File reflectConfigFolder) {
         if ( reflectConfigFolder.isDirectory() ) {
             Arrays.stream(reflectConfigFolder.listFiles( f -> f.getName().endsWith( "json" ) ))
-                    .sorted( ( f1, f2 ) -> f1.getName().compareTo( f2.getName() ) )
-                    .forEach( f -> add( entries, f ) );
+                    .sorted(Comparator.comparing(File::getName))
+                    .forEach(f -> add(entries, f));
         } else {
             throw new ConfigRuntimeException( String.format( "Must be a folder : %s", reflectConfigFolder ) );
         }
