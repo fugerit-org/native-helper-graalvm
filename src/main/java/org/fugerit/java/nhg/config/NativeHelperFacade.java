@@ -96,14 +96,14 @@ public class NativeHelperFacade {
         } ) );
     }
 
-    private static Collection<Class<?>> lookup( NativeHelperConfig config, String packageName ) {
+    private static Collection<Class<?>> lookup( NativeHelperConfig config, GenerateConfig g ) {
         return SafeFunction.get( () -> {
-            if ( config.isJarPackageDiscovery() ) {
+            if ( config.isJarPackageDiscovery() || g.isJarPackageDiscovery() ) {
                 ClassPath cp = ClassPath.from( Thread.currentThread().getContextClassLoader() );
-                ImmutableSet<ClassPath.ClassInfo> allClasses = cp.getTopLevelClasses( packageName );
+                ImmutableSet<ClassPath.ClassInfo> allClasses = cp.getTopLevelClasses( g.getPackageName() );
                 return allClasses.stream().map( ci ->  SafeFunction.get( () -> Class.forName( ci.getName() ) ) ).collect( Collectors.toList() );
             } else {
-                return PackageLookupHelper.findAllClassesUsingClassLoader( packageName );
+                return PackageLookupHelper.findAllClassesUsingClassLoader( g.getPackageName() );
             }
         });
     }
@@ -120,7 +120,7 @@ public class NativeHelperFacade {
                 if ( StringUtils.isNotEmpty( g.getExcludeClassNames() ) ) {
                     excludeClassNames.addAll( Arrays.asList( g.getExcludeClassNames().split( "," ) ) );
                 }
-                lookup( config, g.getPackageName() ).stream()
+                lookup( config, g ).stream()
                         .filter(
                             c -> !excludeClassNames.contains( c.getSimpleName() )
                         ).sorted(

@@ -188,14 +188,15 @@ top level properties :
 
 entry config properties : 
 
-| name              | default | required | type      | description                                                                     |
-|-------------------|---------|----------|-----------|---------------------------------------------------------------------------------|
-| className         | *none*  | *false*  | *string*  | fully qualified class name (alternative to *packageName*)                       |
-| packageName       | *none*  | *false*  | *string*  | fully qualified package name (alternative to *className*) (*)                   |
-| excludeClassNames | *none*  | *false*  | *string*  | if *packageName* is set, comma separeted list of class simple names to excludes |
-| mode              | *none*  | *true*   | *string*  | accept values : *getters*, *setters*, *getters_setters*, *all*                  |
-| skipGenerators    | *false* | *false*  | *boolean* | if set to *true* will not generate constructors metadata                        |
-| typeReachable     | *none*  | *false*  | *string*  | type for typeReachable condition                                                |
+| name                | default | required | type      | description                                                                     |
+|---------------------|---------|----------|-----------|---------------------------------------------------------------------------------|
+| className           | *none*  | *false*  | *string*  | fully qualified class name (alternative to *packageName*)                       |
+| packageName         | *none*  | *false*  | *string*  | fully qualified package name (alternative to *className*) (*)                   |
+| excludeClassNames   | *none*  | *false*  | *string*  | if *packageName* is set, comma separeted list of class simple names to excludes |
+| mode                | *none*  | *true*   | *string*  | accept values : *getters*, *setters*, *getters_setters*, *all*                  |
+| skipGenerators      | *false* | *false*  | *boolean* | if set to *true* will not generate constructors metadata                        |
+| typeReachable       | *none*  | *false*  | *string*  | type for typeReachable condition                                                |
+| jarPackageDiscovery | *false* | *false*  | *boolean* | if *true* will try to discover packages in jar                                  |
 
 (*) currently package packed ar only supported if *jarPackageDiscovery* is set to *true*
 

@@ -1,0 +1,9 @@
+# native-helper-graalvm generation configuration
+---
+reflectConfigJsonOutputPath: target/native-image-package/reflect-config-guava-1.json
+createParentDirectory: true
+jarPackageDiscovery: true
+generate:
+  - packageName: org.fugerit.java.core.cfg.provider
+    mode: getters
+    jarPackageDiscovery: true

@@ -33,7 +33,7 @@ class TestNativeHelperFacade {
 
     private static final String TEST_CONFIG_PACKAGE = BASE_TEST_CONFIG_PATH+"native-helper-config-package.yaml";
 
-    private static final String TEST_CONFIG_GUAVA = BASE_TEST_CONFIG_PATH+"native-helper-config-guava.yaml";
+    private static final String TEST_CONFIG_GUAVA = BASE_TEST_CONFIG_PATH+"native-helper-config-guava-1.yaml";
 
     private NativeHelperConfig loadConfig(String path ) {
         NativeHelperConfig config = NativeHelperFacade.loadConfig( path );

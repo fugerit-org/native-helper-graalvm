@@ -13,11 +13,13 @@ class TestNativeHelperGuavaFacade {
 
     private static final String BASE_TEST_CONFIG_PATH = "src/test/resources/tool/config/";
 
-    private static final String TEST_CONFIG_GUAVA = BASE_TEST_CONFIG_PATH+"native-helper-config-guava.yaml";
+    private static final String TEST_CONFIG_GUAVA_1 = BASE_TEST_CONFIG_PATH+"native-helper-config-guava-1.yaml";
+
+    private static final String TEST_CONFIG_GUAVA_2 = BASE_TEST_CONFIG_PATH+"native-helper-config-guava-2.yaml";
 
     @Test
-    void testConfigGuava() throws IOException {
-        NativeHelperConfig config = NativeHelperFacade.loadAndGenerate( TEST_CONFIG_GUAVA );
+    void testConfigGuava2() throws IOException {
+        NativeHelperConfig config = NativeHelperFacade.loadAndGenerate( TEST_CONFIG_GUAVA_1 );
         Assertions.assertNotNull( config );
     }
 

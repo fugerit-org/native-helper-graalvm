@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- jarPackageDiscovery can be set for single entry
+
 ## [1.4.2] - 2024-05-28
 
 ### Fixed

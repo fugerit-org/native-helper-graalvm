@@ -108,6 +108,9 @@
     "name" : "setExcludeClassNames",
     "parameterTypes" : [ "java.lang.String" ]
   }, {
+    "name" : "setJarPackageDiscovery",
+    "parameterTypes" : [ "boolean" ]
+  }, {
     "name" : "setMode",
     "parameterTypes" : [ "java.lang.String" ]
   }, {

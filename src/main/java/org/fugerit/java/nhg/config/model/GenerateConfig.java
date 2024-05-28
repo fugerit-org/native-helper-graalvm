@@ -25,4 +25,7 @@ public class GenerateConfig {
     @Getter @Setter
     private String typeReachable;
 
+    @Getter @Setter
+    private boolean jarPackageDiscovery;
+
 }
