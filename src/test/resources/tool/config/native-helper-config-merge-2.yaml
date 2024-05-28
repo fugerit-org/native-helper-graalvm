@@ -1,0 +1,9 @@
+# Generator
+---
+reflectConfigJsonOutputPath: target/native-image-merged/reflect-config-merged-2.json
+createParentDirectory: true
+merge:
+  - reflectConfigPath: src/test/resources/reflect-config/reflect-config-emp.json
+    mode: failOnError
+  - reflectConfigPath: src/test/resources/reflect-config/reflect-config-nhg.json
+    mode: warnOnError

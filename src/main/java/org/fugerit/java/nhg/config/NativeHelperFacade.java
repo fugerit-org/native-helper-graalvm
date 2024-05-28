@@ -19,6 +19,7 @@ import org.fugerit.java.nhg.reflect.config.EntryHelper;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.Consumer;
 
 @Slf4j
 public class NativeHelperFacade {
@@ -34,6 +35,12 @@ public class NativeHelperFacade {
     public static final String MODE_ALL = "all";
 
     public static final String PARAM_REFLECT_CONFIG_JSON_OUTPUT_PATH = "reflectConfigJsonOutputPath";
+
+    public static final String MERGE_MODE_FAIL_ON_ERROR = "failOnError";
+
+    public static final String MERGE_MODE_WARN_ON_ERROR = "warnOnError";
+
+    private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
 
     public static NativeHelperConfig loadConfig( String path ) {
         return SafeFunction.get( () -> {
@@ -74,6 +81,18 @@ public class NativeHelperFacade {
         list.add(entry);
     }
 
+    private static void merge( NativeHelperConfig config, final List<Entry> list ) {
+        SafeFunction.applyIfNotNull( config.getMerge(), () -> config.getMerge().forEach( m -> {
+            Consumer<Exception> exceptionConsumer = MERGE_MODE_FAIL_ON_ERROR.equalsIgnoreCase( m.getMode() ) ? SafeFunction.EX_CONSUMER_THROW_CONFIG_RUNTIME : SafeFunction.EX_CONSUMER_LOG_WARN;
+            SafeFunction.apply( () -> {
+                log.info( "merge config : {}", m );
+                try ( FileReader fis = new FileReader( m.getReflectConfigPath() ) ) {
+                    list.addAll( JSON_MAPPER.readValue( fis, List.class ) );
+                }
+            }, exceptionConsumer );
+        } ) );
+    }
+
     public static List<Entry> generateEntries( NativeHelperConfig config ) {
         final List<Entry> list = new ArrayList<>();
         config.getGenerate().forEach(g -> {
@@ -99,6 +118,7 @@ public class NativeHelperFacade {
                 throw new ConfigRuntimeException( "className or packageName must be provided for each entry" );
             }
         });
+        merge( config, list );
         return list;
     }
 

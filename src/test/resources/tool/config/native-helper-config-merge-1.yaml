@@ -1,0 +1,12 @@
+# Generator
+---
+reflectConfigJsonOutputPath: target/native-image-merged/reflect-config-merged-1.json
+createParentDirectory: true
+generate:
+  - className: org.fugerit.java.nhg.config.model.GenerateConfig
+    mode: getters
+merge:
+  - reflectConfigPath: src/test/resources/reflect-config/reflect-config-emp.json
+    mode: failOnError
+  - reflectConfigPath: src/test/resources/reflect-config/reflect-config-nhg.json
+    mode: warnOnError

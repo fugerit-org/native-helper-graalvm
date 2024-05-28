@@ -124,6 +124,31 @@
   "condition" : {
     "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
   },
+  "name" : "org.fugerit.java.nhg.config.model.MergeConfig",
+  "fields" : [ ],
+  "methods" : [ {
+    "name" : "<init>",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getClass",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getMode",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getReflectConfigPath",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "setMode",
+    "parameterTypes" : [ "java.lang.String" ]
+  }, {
+    "name" : "setReflectConfigPath",
+    "parameterTypes" : [ "java.lang.String" ]
+  } ]
+}, {
+  "condition" : {
+    "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
+  },
   "name" : "org.fugerit.java.nhg.config.model.NativeHelperConfig",
   "fields" : [ ],
   "methods" : [ {
@@ -136,6 +161,9 @@
     "name" : "getGenerate",
     "parameterTypes" : [ ]
   }, {
+    "name" : "getMerge",
+    "parameterTypes" : [ ]
+  }, {
     "name" : "getReflectConfigJsonOutputPath",
     "parameterTypes" : [ ]
   }, {
@@ -143,6 +171,9 @@
     "parameterTypes" : [ "boolean" ]
   }, {
     "name" : "setGenerate",
+    "parameterTypes" : [ "java.util.List" ]
+  }, {
+    "name" : "setMerge",
     "parameterTypes" : [ "java.util.List" ]
   }, {
     "name" : "setReflectConfigJsonOutputPath",

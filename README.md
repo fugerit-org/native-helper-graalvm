@@ -176,13 +176,14 @@ Here is a full [code example](src/test/java/test/org/fugerit/java/nhg/TestSample
 
 top level properties :
 
-| name                        | default | required | type            | description                                                            |
-|-----------------------------|---------|----------|-----------------|------------------------------------------------------------------------|
-| reflectConfigJsonOutputPath | *none*  | *false*  | *string*        | default generation path for *reflect-config.json* file                 |
-| createParentDirectory       | *false* | *false*  | *boolean*       | if *true* will generate *reflectConfigJsonOutputPath* parent directory |
-| generate                    | *none*  | *true*   | list of entries | list of entries to generate                                            |
+| name                        | default | required | type                  | description                                                            |
+|-----------------------------|---------|----------|-----------------------|------------------------------------------------------------------------|
+| reflectConfigJsonOutputPath | *none*  | *false*  | *string*              | default generation path for *reflect-config.json* file                 |
+| createParentDirectory       | *false* | *false*  | *boolean*             | if *true* will generate *reflectConfigJsonOutputPath* parent directory |
+| generate                    | *none*  | *false*  | list of entry config  | list of entries to generate                                            |
+| merge                       | *none*  | *false*  | list of merge coinfig | list of reflect-config.json to merge in the output                     |
 
-entries properties : 
+entry config properties : 
 
 | name              | default | required | type      | description                                                                     |
 |-------------------|---------|----------|-----------|---------------------------------------------------------------------------------|
@@ -194,6 +195,13 @@ entries properties :
 | typeReachable     | *none*  | *false*  | *string*  | type for typeReachable condition                                                |
 
 (*) currently package packed in a jar are not supported.
+
+merge config properties :
+
+| name              | default       | required | type      | description                                                                                                          |
+|-------------------|---------------|----------|-----------|----------------------------------------------------------------------------------------------------------------------|
+| reflectConfigPath | *none*        | *true*   | *string*  | path to reflect-config.json file to merge                                                                            |
+| mode              | *warnOnError* | *false*  | *string*  | Can be *warnOnError* : error will be just logged on error, *failOnError* : the generation will fail in case of error |
 
 ## 4. Generate reflect-config.json file
 

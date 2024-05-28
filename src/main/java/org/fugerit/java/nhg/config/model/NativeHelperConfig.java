@@ -19,4 +19,7 @@ public class NativeHelperConfig {
     @Getter @Setter
     private List<GenerateConfig> generate;
 
+    @Getter @Setter
+    private List<MergeConfig> merge;
+
 }

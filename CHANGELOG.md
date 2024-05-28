@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- native-helper-config.yaml now can merge multiple file
+
+### Change
+
+- native-helper-config.yaml, generate property is not required anymore
+
 ## [1.3.5] - 2024-04-01
 
 ### Added
