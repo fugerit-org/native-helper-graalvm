@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Change
 
 - fj-bom set to 1.6.5
+- fj-core set to 8.6.2
 - native-helper-config.yaml, generate property is not required anymore
 
 ## [1.3.5] - 2024-04-01

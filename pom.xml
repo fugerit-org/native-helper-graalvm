@@ -25,7 +25,7 @@
 
 	<properties>
 	    <java-version-compliance>8</java-version-compliance>
-		<fj-version>8.5.3</fj-version>
+		<fj-version>8.6.2</fj-version>
 	</properties>
 
 	<organization>
