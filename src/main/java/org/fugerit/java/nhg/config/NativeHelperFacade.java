@@ -101,7 +101,7 @@ public class NativeHelperFacade {
             if ( config.isJarPackageDiscovery() ) {
                 ClassPath cp = ClassPath.from( Thread.currentThread().getContextClassLoader() );
                 ImmutableSet<ClassPath.ClassInfo> allClasses = cp.getTopLevelClasses( packageName );
-                return allClasses.stream().map(ClassPath.ClassInfo::getClass).collect( Collectors.toList() );
+                return allClasses.stream().map( ci ->  SafeFunction.get( () -> Class.forName( ci.getName() ) ) ).collect( Collectors.toList() );
             } else {
                 return PackageLookupHelper.findAllClassesUsingClassLoader( packageName );
             }
