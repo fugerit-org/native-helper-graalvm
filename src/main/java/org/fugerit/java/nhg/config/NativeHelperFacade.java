@@ -86,7 +86,7 @@ public class NativeHelperFacade {
 
     private static void merge( NativeHelperConfig config, final List<Entry> list ) {
         SafeFunction.applyIfNotNull( config.getMerge(), () -> config.getMerge().forEach( m -> {
-            Consumer<Exception> exceptionConsumer = MERGE_MODE_FAIL_ON_ERROR.equalsIgnoreCase( m.getMode() ) ? SafeFunction.EX_CONSUMER_THROW_CONFIG_RUNTIME : SafeFunction.EX_CONSUMER_LOG_WARN;
+            Consumer<Exception> exceptionConsumer = MERGE_MODE_FAIL_ON_ERROR.equalsIgnoreCase( m.getMode() ) ? SafeFunction.EX_CONSUMER_THROW_CONFIG_RUNTIME : SafeFunction.EX_CONSUMER_TRACE_WARN;
             SafeFunction.apply( () -> {
                 log.info( "merge config : {}", m );
                 try ( FileReader fis = new FileReader( m.getReflectConfigPath() ) ) {
@@ -97,11 +97,13 @@ public class NativeHelperFacade {
     }
 
     private static Collection<Class<?>> lookup( NativeHelperConfig config, GenerateConfig g ) {
+        log.info( "lookup package : {}", g.getPackageName() );
         return SafeFunction.get( () -> {
             if ( config.isJarPackageDiscovery() || g.isJarPackageDiscovery() ) {
-                ClassPath cp = ClassPath.from( Thread.currentThread().getContextClassLoader() );
+                ClassLoader cl = Thread.currentThread().getContextClassLoader();
+                ClassPath cp = ClassPath.from( cl );
                 ImmutableSet<ClassPath.ClassInfo> allClasses = cp.getTopLevelClasses( g.getPackageName() );
-                return allClasses.stream().map( ci ->  SafeFunction.get( () -> Class.forName( ci.getName() ) ) ).collect( Collectors.toList() );
+                return allClasses.stream().map( ci ->  SafeFunction.get( () -> cl.loadClass( ci.getName() ) ) ).collect( Collectors.toList() );
             } else {
                 return PackageLookupHelper.findAllClassesUsingClassLoader( g.getPackageName() );
             }
