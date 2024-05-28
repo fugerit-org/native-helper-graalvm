@@ -180,8 +180,11 @@ top level properties :
 |-----------------------------|---------|----------|-----------------------|------------------------------------------------------------------------|
 | reflectConfigJsonOutputPath | *none*  | *false*  | *string*              | default generation path for *reflect-config.json* file                 |
 | createParentDirectory       | *false* | *false*  | *boolean*             | if *true* will generate *reflectConfigJsonOutputPath* parent directory |
+| jarPackageDiscovery         | *false* | *false*  | *boolean*             | if *true* will try to discover packages in jar                         |
 | generate                    | *none*  | *false*  | list of entry config  | list of entries to generate                                            |
 | merge                       | *none*  | *false*  | list of merge coinfig | list of reflect-config.json to merge in the output                     |
+
+
 
 entry config properties : 
 
@@ -194,7 +197,7 @@ entry config properties :
 | skipGenerators    | *false* | *false*  | *boolean* | if set to *true* will not generate constructors metadata                        |
 | typeReachable     | *none*  | *false*  | *string*  | type for typeReachable condition                                                |
 
-(*) currently package packed in a jar are not supported.
+(*) currently package packed ar only supported if *jarPackageDiscovery* is set to *true*
 
 merge config properties :
 

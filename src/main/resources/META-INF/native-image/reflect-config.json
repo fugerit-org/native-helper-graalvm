@@ -173,6 +173,9 @@
     "name" : "setGenerate",
     "parameterTypes" : [ "java.util.List" ]
   }, {
+    "name" : "setJarPackageDiscovery",
+    "parameterTypes" : [ "boolean" ]
+  }, {
     "name" : "setMerge",
     "parameterTypes" : [ "java.util.List" ]
   }, {

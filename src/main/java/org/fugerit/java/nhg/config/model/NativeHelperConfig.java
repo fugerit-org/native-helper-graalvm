@@ -17,6 +17,9 @@ public class NativeHelperConfig {
     private boolean createParentDirectory;
 
     @Getter @Setter
+    private boolean jarPackageDiscovery;
+
+    @Getter @Setter
     private List<GenerateConfig> generate;
 
     @Getter @Setter

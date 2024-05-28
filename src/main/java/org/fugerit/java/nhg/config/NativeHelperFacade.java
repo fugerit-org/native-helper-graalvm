@@ -2,6 +2,8 @@ package org.fugerit.java.nhg.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.reflect.ClassPath;
 import lombok.extern.slf4j.Slf4j;
 import org.fugerit.java.core.cfg.ConfigRuntimeException;
 import org.fugerit.java.core.function.SafeFunction;
@@ -20,6 +22,7 @@ import org.fugerit.java.nhg.reflect.config.EntryHelper;
 import java.io.*;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class NativeHelperFacade {
@@ -93,6 +96,18 @@ public class NativeHelperFacade {
         } ) );
     }
 
+    private static Collection<Class<?>> lookup( NativeHelperConfig config, String packageName ) {
+        return SafeFunction.get( () -> {
+            if ( config.isJarPackageDiscovery() ) {
+                ClassPath cp = ClassPath.from( Thread.currentThread().getContextClassLoader() );
+                ImmutableSet<ClassPath.ClassInfo> allClasses = cp.getTopLevelClasses( packageName );
+                return allClasses.stream().map(ClassPath.ClassInfo::getClass).collect( Collectors.toList() );
+            } else {
+                return PackageLookupHelper.findAllClassesUsingClassLoader( packageName );
+            }
+        });
+    }
+
     public static List<Entry> generateEntries( NativeHelperConfig config ) {
         final List<Entry> list = new ArrayList<>();
         config.getGenerate().forEach(g -> {
@@ -105,11 +120,11 @@ public class NativeHelperFacade {
                 if ( StringUtils.isNotEmpty( g.getExcludeClassNames() ) ) {
                     excludeClassNames.addAll( Arrays.asList( g.getExcludeClassNames().split( "," ) ) );
                 }
-                PackageLookupHelper.findAllClassesUsingClassLoader(g.getPackageName()).stream()
+                lookup( config, g.getPackageName() ).stream()
                         .filter(
                             c -> !excludeClassNames.contains( c.getSimpleName() )
                         ).sorted(
-                            ( c1, c2 ) -> c1.getSimpleName().compareTo( c2.getSimpleName() )
+                            Comparator.comparing( Class::getSimpleName )
                         ).forEach( c -> {
                             log.info( "generate class reflect config : {} (from package : {})", c, g.getPackageName() );
                             handleClass( c, list, g );

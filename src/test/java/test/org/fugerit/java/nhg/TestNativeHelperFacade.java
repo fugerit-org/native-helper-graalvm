@@ -33,6 +33,8 @@ class TestNativeHelperFacade {
 
     private static final String TEST_CONFIG_PACKAGE = BASE_TEST_CONFIG_PATH+"native-helper-config-package.yaml";
 
+    private static final String TEST_CONFIG_GUAVA = BASE_TEST_CONFIG_PATH+"native-helper-config-guava.yaml";
+
     private NativeHelperConfig loadConfig(String path ) {
         NativeHelperConfig config = NativeHelperFacade.loadConfig( path );
         config.getGenerate().forEach( g -> log.info( "generation config : {}", g ) );
