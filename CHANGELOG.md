@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.6] - 2024-11-02
+
+### Changed
+
+- adapt entry model to full relfect-config.json schema <https://github.com/fugerit-org/native-helper-graalvm/issues/1>
+
 ## [1.4.5] - 2024-11-02
 
 ### Changed
