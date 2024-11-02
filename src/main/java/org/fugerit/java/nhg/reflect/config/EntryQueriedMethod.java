@@ -9,13 +9,6 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * List of methods from this class that are registered for reflection
- * <p>
- * 
- * 
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "name",
@@ -23,10 +16,10 @@ import java.util.List;
 })
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class EntryMethod {
+public class EntryQueriedMethod {
 
     /**
-     * Method name that should be registered for this class
+     * Method name that are queried for this class
      * <p>
      * 
      * (Required)
@@ -35,9 +28,14 @@ public class EntryMethod {
     @JsonProperty("name")
     @NonNull @Getter @Setter
     private String name;
-
+    /**
+     * List of methods to register for this class that are only looked up but not invoked.
+     * <p>
+     * 
+     * 
+     */
     @JsonProperty("parameterTypes")
     @Getter @Setter
-    private List<String> parameterTypes = new ArrayList<>();
+    private List<String> parameterTypes = new ArrayList<>();;
 
 }

@@ -1,0 +1,32 @@
+{
+  "condition": {
+    "typeReachable": "<condition-class>"
+  },
+  "name": "<class>",
+  "methods": [
+    {"name": "<methodName>", "parameterTypes": ["<param-one-type>"]}
+  ],
+  "queriedMethods": [
+    {"name": "<methodName>", "parameterTypes": ["<param-one-type>"]}
+  ],
+  "fields": [
+    {"name": "<fieldName>"}
+  ],
+  "allDeclaredClasses": true,
+  "allDeclaredMethods": true,
+  "allDeclaredFields": true,
+  "allDeclaredConstructors": true,
+  "allPublicClasses": true,
+  "allPublicMethods": true,
+  "allPublicFields": true,
+  "allPublicConstructors": true,
+  "allRecordComponents": true,
+  "allNestMembers": true,
+  "allSigners": true,
+  "allPermittedSubclasses": true,
+  "queryAllDeclaredMethods": true,
+  "queryAllDeclaredConstructors": true,
+  "queryAllPublicMethods": true,
+  "queryAllPublicConstructors": true,
+  "unsafeAllocated": true
+}
