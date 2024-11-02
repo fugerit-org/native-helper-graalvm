@@ -16,7 +16,7 @@ class TestFullSchema {
 
     @Test
     void loadWriteFullSchema() throws IOException {
-        try (InputStreamReader reader = new InputStreamReader(ClassHelper.loadFromDefaultClassLoader( "reflect-config/full_schema.json" ));
+        try (InputStreamReader reader = new InputStreamReader(ClassHelper.loadFromDefaultClassLoader( "schema/full_schema.json" ));
              StringWriter writer = new StringWriter()) {
             ObjectMapper mapper = JacksonHelper.newObjectMapper();
             Entry entry = mapper.readValue( reader, Entry.class );
