@@ -5,6 +5,7 @@ import org.fugerit.java.core.cfg.ConfigRuntimeException;
 import org.fugerit.java.nhg.GenerateReflectConfig;
 import org.fugerit.java.nhg.MergeConfigUtil;
 import org.fugerit.java.nhg.reflect.config.Entry;
+import org.fugerit.java.nhg.reflect.config.EntryField;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -33,6 +35,16 @@ class TestMergeConfigUtil {
             generateReflectConfig.generate( writer, entries );
             log.info( "print test result 1 : {}", writer );
         }
+        Assertions.assertFalse( entries.isEmpty() );
+    }
+
+    @Test
+    void testSort() {
+        Entry entry1 = new Entry();
+        entry1.setFields(Arrays.asList( new EntryField( "id" )));
+        List<Entry> entries = Arrays.asList( entry1 );
+        GenerateReflectConfig generateReflectConfig = new GenerateReflectConfig();
+        generateReflectConfig.normalizeSort( entries );
         Assertions.assertFalse( entries.isEmpty() );
     }
 
