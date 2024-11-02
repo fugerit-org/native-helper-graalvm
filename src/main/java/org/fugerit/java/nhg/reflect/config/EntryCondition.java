@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EntryCondition {
 
-    /**
+    /*
      * Fully qualified class name of the class that must be reachable in order to register the class <name> for reflection
      * <p>
      * 

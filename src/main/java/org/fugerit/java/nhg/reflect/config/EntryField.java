@@ -14,7 +14,7 @@ import lombok.*;
 @NoArgsConstructor
 public class EntryField {
 
-    /**
+    /*
      * Name of the field that should be registered for reflection
      * <p>
      * 

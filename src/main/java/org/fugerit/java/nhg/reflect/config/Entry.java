@@ -48,64 +48,52 @@ public class Entry {
 
     @JsonProperty("condition")
     @Getter @Setter private EntryCondition condition;
-    /**
-     * Name of the class that should be registered for reflection
-     * <p>
-     * 
-     * (Required)
-     * 
-     */
     @JsonProperty("name")
     @NonNull @Getter @Setter private String name;
-    /**
-     * List of methods that should be registered for the class declared in <name>
-     * <p>
-     * 
-     * 
-     */
+
     @JsonProperty("methods")
     @Getter @Setter private List<EntryMethod> methods = new ArrayList<>();;
-    /**
+    /*
      * List of methods that are queried for the class declared in <name>
      * <p>
-     * 
-     * 
+     *
+     *
      */
     @JsonProperty("queriedMethods")
     @Getter @Setter private List<EntryQueriedMethod> queriedMethods = new ArrayList<>();;
-    /**
+    /*
      * List of class fields that can be looked up, read, or modified for the class declared in <name>
      * <p>
-     * 
-     * 
+     *
+     *
      */
     @JsonProperty("fields")
     @Getter @Setter private List<EntryField> fields = new ArrayList<>();;
-    /**
+    /*
      * Register classes which would be returned by the java.lang.Class#getDeclaredClasses call
      * <p>
-     * 
-     * 
+     *
+     *
      */
     @JsonProperty("allDeclaredClasses")
     @Getter @Setter private Boolean allDeclaredClasses;
-    /**
+    /*
      * Register methods which would be returned by the java.lang.Class#getDeclaredMethods call
      * <p>
-     * 
-     * 
+     *
+     *
      */
     @JsonProperty("allDeclaredMethods")
     @Getter @Setter private Boolean allDeclaredMethods;
-    /**
+    /*
      * Register fields which would be returned by the java.lang.Class#getDeclaredFields call
      * <p>
-     * 
-     * 
+     *
+     *
      */
     @JsonProperty("allDeclaredFields")
     @Getter @Setter private Boolean allDeclaredFields;
-    /**
+    /*
      * Register constructors which would be returned by the java.lang.Class#getDeclaredConstructors call
      * <p>
      * 
@@ -113,7 +101,7 @@ public class Entry {
      */
     @JsonProperty("allDeclaredConstructors")
     @Getter @Setter private Boolean allDeclaredConstructors;
-    /**
+    /*
      * Register all @Getter @Setter private classes which would be returned by the java.lang.Class#getClasses call
      * <p>
      * 
@@ -121,7 +109,7 @@ public class Entry {
      */
     @JsonProperty("allPublicClasses")
     @Getter @Setter private Boolean allPublicClasses;
-    /**
+    /*
      * Register all @Getter @Setter private methods which would be returned by the java.lang.Class#getMethods call
      * <p>
      * 
@@ -129,7 +117,7 @@ public class Entry {
      */
     @JsonProperty("allPublicMethods")
     @Getter @Setter private Boolean allPublicMethods;
-    /**
+    /*
      * Register all @Getter @Setter private fields which would be returned by the java.lang.Class#getFields call
      * <p>
      * 
@@ -137,7 +125,7 @@ public class Entry {
      */
     @JsonProperty("allPublicFields")
     @Getter @Setter private Boolean allPublicFields;
-    /**
+    /*
      * Register all @Getter @Setter private constructors which would be returned by the java.lang.Class#getConstructors call
      * <p>
      * 
@@ -145,7 +133,7 @@ public class Entry {
      */
     @JsonProperty("allPublicConstructors")
     @Getter @Setter private Boolean allPublicConstructors;
-    /**
+    /*
      * Register record components which would be returned by the java.lang.Class#getRecordComponents call
      * <p>
      * 
@@ -153,7 +141,7 @@ public class Entry {
      */
     @JsonProperty("allRecordComponents")
     @Getter @Setter private Boolean allRecordComponents;
-    /**
+    /*
      * Register permitted subclasses which would be returned by the java.lang.Class#getPermittedSubclasses call
      * <p>
      * 
@@ -161,7 +149,7 @@ public class Entry {
      */
     @JsonProperty("allPermittedSubclasses")
     @Getter @Setter private Boolean allPermittedSubclasses;
-    /**
+    /*
      * Register nest members which would be returned by the java.lang.Class#getNestMembers call
      * <p>
      * 
@@ -169,7 +157,7 @@ public class Entry {
      */
     @JsonProperty("allNestMembers")
     @Getter @Setter private Boolean allNestMembers;
-    /**
+    /*
      * Register signers which would be returned by the java.lang.Class#getSigners call
      * <p>
      * 
@@ -177,7 +165,7 @@ public class Entry {
      */
     @JsonProperty("allSigners")
     @Getter @Setter private Boolean allSigners;
-    /**
+    /*
      * Register methods which would be returned by the java.lang.Class#getDeclaredMethods call but only for lookup
      * <p>
      * 
@@ -185,7 +173,7 @@ public class Entry {
      */
     @JsonProperty("queryAllDeclaredMethods")
     @Getter @Setter private Boolean queryAllDeclaredMethods;
-    /**
+    /*
      * Register constructors which would be returned by the java.lang.Class#getDeclaredConstructors call but only for lookup
      * <p>
      * 
@@ -193,7 +181,7 @@ public class Entry {
      */
     @JsonProperty("queryAllDeclaredConstructors")
     @Getter @Setter private Boolean queryAllDeclaredConstructors;
-    /**
+    /*
      * Register all @Getter @Setter private methods which would be returned by the java.lang.Class#getMethods call but only for lookup
      * <p>
      * 
@@ -201,7 +189,7 @@ public class Entry {
      */
     @JsonProperty("queryAllPublicMethods")
     @Getter @Setter private Boolean queryAllPublicMethods;
-    /**
+    /*
      * Register all @Getter @Setter private constructors which would be returned by the java.lang.Class#getConstructors call but only for lookup
      * <p>
      * 
@@ -209,7 +197,7 @@ public class Entry {
      */
     @JsonProperty("queryAllPublicConstructors")
     @Getter @Setter private Boolean queryAllPublicConstructors;
-    /**
+    /*
      * Allow objects of this class to be instantiated with a call to jdk.internal.misc.Unsafe#allocateInstance
      * <p>
      * 

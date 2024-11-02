@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class EntryQueriedMethod {
 
-    /**
+    /*
      * Method name that are queried for this class
      * <p>
      * 
@@ -28,7 +28,7 @@ public class EntryQueriedMethod {
     @JsonProperty("name")
     @NonNull @Getter @Setter
     private String name;
-    /**
+    /*
      * List of methods to register for this class that are only looked up but not invoked.
      * <p>
      * 

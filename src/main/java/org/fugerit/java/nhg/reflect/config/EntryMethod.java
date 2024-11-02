@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
+/*
  * List of methods from this class that are registered for reflection
  * <p>
  * 
@@ -25,7 +25,7 @@ import java.util.List;
 @NoArgsConstructor
 public class EntryMethod {
 
-    /**
+    /*
      * Method name that should be registered for this class
      * <p>
      * 
