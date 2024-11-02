@@ -52,7 +52,7 @@ public class Entry {
     @NonNull @Getter @Setter private String name;
 
     @JsonProperty("methods")
-    @Getter @Setter private List<EntryMethod> methods = new ArrayList<>();;
+    @Getter @Setter private List<EntryMethod> methods = new ArrayList<>();
     /*
      * List of methods that are queried for the class declared in <name>
      * <p>
@@ -60,7 +60,7 @@ public class Entry {
      *
      */
     @JsonProperty("queriedMethods")
-    @Getter @Setter private List<EntryQueriedMethod> queriedMethods = new ArrayList<>();;
+    @Getter @Setter private List<EntryQueriedMethod> queriedMethods = new ArrayList<>();
     /*
      * List of class fields that can be looked up, read, or modified for the class declared in <name>
      * <p>
@@ -68,7 +68,7 @@ public class Entry {
      *
      */
     @JsonProperty("fields")
-    @Getter @Setter private List<EntryField> fields = new ArrayList<>();;
+    @Getter @Setter private List<EntryField> fields = new ArrayList<>();
     /*
      * Register classes which would be returned by the java.lang.Class#getDeclaredClasses call
      * <p>

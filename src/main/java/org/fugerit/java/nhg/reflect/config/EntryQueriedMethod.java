@@ -36,6 +36,6 @@ public class EntryQueriedMethod {
      */
     @JsonProperty("parameterTypes")
     @Getter @Setter
-    private List<String> parameterTypes = new ArrayList<>();;
+    private List<String> parameterTypes = new ArrayList<>();
 
 }
