@@ -1,5 +1,6 @@
 package org.fugerit.java.nhg;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.fugerit.java.core.cfg.ConfigRuntimeException;
 import org.fugerit.java.core.function.SafeFunction;
@@ -38,7 +39,7 @@ public class MergeConfigUtil {
 
     public static void add( List<Entry> entries, Reader reflectConfigReader) {
         SafeFunction.apply( () -> {
-            List<Entry> addEntries = MAPPER.readValue( reflectConfigReader, List.class );
+            List<Entry> addEntries = MAPPER.readValue( reflectConfigReader, new TypeReference<List<Entry>>() {} );
             entries.addAll( addEntries );
         } );
     }

@@ -1,5 +1,6 @@
 package org.fugerit.java.nhg.config;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import com.google.common.collect.ImmutableSet;
@@ -90,7 +91,7 @@ public class NativeHelperFacade {
             SafeFunction.apply( () -> {
                 log.info( "merge config : {}", m );
                 try ( FileReader fis = new FileReader( m.getReflectConfigPath() ) ) {
-                    list.addAll( JSON_MAPPER.readValue( fis, List.class ) );
+                    list.addAll( JSON_MAPPER.readValue( fis, new TypeReference<List<Entry>>() {} ) );
                 }
             }, exceptionConsumer );
         } ) );

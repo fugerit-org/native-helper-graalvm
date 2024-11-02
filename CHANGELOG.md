@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- java.lang.ClassCastException: java.util.LinkedHashMap cannot be cast to X <https://www.baeldung.com/jackson-linkedhashmap-cannot-be-cast>
+
 ## [1.4.4] - 2024-05-28
 
 ### Fixed
