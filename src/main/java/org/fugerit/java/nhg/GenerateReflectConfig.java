@@ -21,7 +21,7 @@ public class GenerateReflectConfig {
     }
 
     public GenerateReflectConfig() {
-        this( new ObjectMapper().setSerializationInclusion( JsonInclude.Include.NON_NULL ).writerWithDefaultPrettyPrinter() );
+        this( JacksonHelper.newObjectMapper().writerWithDefaultPrettyPrinter() );
     }
 
     private static String keyEntryField( EntryField o ) {
@@ -46,7 +46,7 @@ public class GenerateReflectConfig {
     public void generate(Writer out, List<Entry> reflectConfig ) {
         SafeFunction.apply( () -> {
             normalizeSort( reflectConfig );
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = JacksonHelper.newObjectMapper();
             mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
             writer.writeValue( out, reflectConfig );
         } );

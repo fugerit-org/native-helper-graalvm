@@ -1,12 +1,47 @@
 [ {
   "name" : "org.fugerit.java.nhg.reflect.config.Entry",
-  "fields" : [ ],
   "methods" : [ {
     "name" : "<init>",
     "parameterTypes" : [ ]
   }, {
     "name" : "<init>",
     "parameterTypes" : [ "java.lang.String" ]
+  }, {
+    "name" : "getAllDeclaredClasses",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllDeclaredConstructors",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllDeclaredFields",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllDeclaredMethods",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllNestMembers",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllPermittedSubclasses",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllPublicClasses",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllPublicConstructors",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllPublicFields",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllPublicMethods",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllRecordComponents",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getAllSigners",
+    "parameterTypes" : [ ]
   }, {
     "name" : "getClass",
     "parameterTypes" : [ ]
@@ -22,10 +57,27 @@
   }, {
     "name" : "getName",
     "parameterTypes" : [ ]
+  }, {
+    "name" : "getQueriedMethods",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getQueryAllDeclaredConstructors",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getQueryAllDeclaredMethods",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getQueryAllPublicConstructors",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getQueryAllPublicMethods",
+    "parameterTypes" : [ ]
+  }, {
+    "name" : "getUnsafeAllocated",
+    "parameterTypes" : [ ]
   } ]
 }, {
   "name" : "org.fugerit.java.nhg.reflect.config.EntryCondition",
-  "fields" : [ ],
   "methods" : [ {
     "name" : "<init>",
     "parameterTypes" : [ ]
@@ -41,7 +93,6 @@
   } ]
 }, {
   "name" : "org.fugerit.java.nhg.reflect.config.EntryField",
-  "fields" : [ ],
   "methods" : [ {
     "name" : "<init>",
     "parameterTypes" : [ ]
@@ -57,7 +108,6 @@
   } ]
 }, {
   "name" : "org.fugerit.java.nhg.reflect.config.EntryMethod",
-  "fields" : [ ],
   "methods" : [ {
     "name" : "<init>",
     "parameterTypes" : [ ]
@@ -79,7 +129,6 @@
     "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
   },
   "name" : "org.fugerit.java.nhg.config.model.GenerateConfig",
-  "fields" : [ ],
   "methods" : [ {
     "name" : "<init>",
     "parameterTypes" : [ ]
@@ -128,7 +177,6 @@
     "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
   },
   "name" : "org.fugerit.java.nhg.config.model.MergeConfig",
-  "fields" : [ ],
   "methods" : [ {
     "name" : "<init>",
     "parameterTypes" : [ ]
@@ -153,7 +201,6 @@
     "typeReachable" : "org.fugerit.java.nhg.config.NativeHelperFacade"
   },
   "name" : "org.fugerit.java.nhg.config.model.NativeHelperConfig",
-  "fields" : [ ],
   "methods" : [ {
     "name" : "<init>",
     "parameterTypes" : [ ]

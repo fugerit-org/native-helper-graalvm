@@ -13,6 +13,7 @@ import org.fugerit.java.core.lang.helpers.ClassHelper;
 import org.fugerit.java.core.lang.helpers.StringUtils;
 import org.fugerit.java.core.util.ObjectUtils;
 import org.fugerit.java.nhg.GenerateReflectConfig;
+import org.fugerit.java.nhg.JacksonHelper;
 import org.fugerit.java.nhg.ReflectConfigUtil;
 import org.fugerit.java.nhg.config.model.GenerateConfig;
 import org.fugerit.java.nhg.config.model.NativeHelperConfig;
@@ -44,7 +45,7 @@ public class NativeHelperFacade {
 
     public static final String MERGE_MODE_WARN_ON_ERROR = "warnOnError";
 
-    private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
+    private static final ObjectMapper JSON_MAPPER = JacksonHelper.newObjectMapper();
 
     public static NativeHelperConfig loadConfig( String path ) {
         return SafeFunction.get( () -> {

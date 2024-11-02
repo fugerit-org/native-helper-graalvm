@@ -17,7 +17,7 @@ public class MergeConfigUtil {
 
     private MergeConfigUtil() {}
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final ObjectMapper MAPPER = JacksonHelper.newObjectMapper();
 
     public static void addFolder( List<Entry> entries, File reflectConfigFolder) {
         if ( reflectConfigFolder.isDirectory() ) {
